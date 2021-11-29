@@ -19,21 +19,16 @@ const list = (data) => {
         <p><span class="nuet">Username:</span> ${names.username}</p>
         <p><span class="nuet">Email:</span> ${names.email}</p>
         <p><span class="nuet">Tel:</span> ${names.phone}</p>
-     </div>`)
-    .join("");
+     </div>`).join("");
 
-    const container = q("#wrapper");
+    const container = q(".wrapper");
     render(
         container,
-        `
-        <div>${elements}</div>
-        `
+        `${elements}`
     );
 };
 
-const searchInp = q(".searchInp")
-
-
+const searchInp = q(".searchInp");
 
 searchInp.addEventListener('keyup', async (event) => {
  
@@ -48,5 +43,11 @@ searchInp.addEventListener('keyup', async (event) => {
     );
 
     list(results);
-  });
+     
+if(results.length < 1){
+        q(".notFound").classList.add("notFoundShow");
+     } else {
+        q(".notFound").classList.remove("notFoundShow");
+      }
 
+  });
