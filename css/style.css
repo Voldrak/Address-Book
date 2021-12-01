@@ -17,18 +17,68 @@ h1 {
     margin: auto;
     margin-top: 70px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 45%;
+    
+    width: 110vh;
     overflow-y:scroll;
     height: 80vh;
 }
 
+.wrapperFav{
+    border: 1px solid black;
+    display: grid;
+    margin: auto;
+    margin-top: 20px;
+    width: 100vh;
+    height: auto;
+    grid-template-columns: repeat(2, 1fr);
+    opacity: 0;
+}
+
+.wrapperNor{
+    display: grid;
+    margin: auto;
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
 .divList {
+    display: flex;
+    justify-content: space-between;
     border: 1px solid black;
     margin: 30px 30px;
     width: 400px;
-    height: 160px;
+    height: 170px;
     padding-left: 20px;
+}
+
+
+.fav{
+    border: none;
+    background: none;
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    background-image: url(../img/nofavorite-35.png);
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.favAct{
+    border: none;
+    background: none;
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    background-image: url(../img/favorite-35.png);
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
 }
 
 .nuet{
@@ -45,7 +95,7 @@ h1 {
     border: 1px dashed black;
     width: 400px;
     height: 100px;
-    top: 210px;
+    top: 290px;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -62,3 +112,4 @@ h1 {
     opacity: 1;
     transition: all 0.35;
 }
+
