@@ -1,31 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda+One&display=swap');
+
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url(../img/bgRubrica.jpg);
+    background-image: url(../img/68-682106_work-desk-background-virtual-desktop-desk-beta-by.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; 
     
 }
 
 h1 {
     text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+    font-family: 'Merienda One', cursive;
 }
 
 #search{
     text-align: center;
     margin-top: 40px;
+    font-family: 'Merienda One', cursive;
+    font-size: 23px;
+
+}
+
+#search input{
+    border-radius: 5px;
+    height: 25px;
+   transition: all 0.35s;
+}
+
+.searchInp:focus{
+outline-color: rgb(255, 115, 0);
+box-shadow:  0px 0px 20px 0px rgba(255, 115, 0, 0.6);
+
 }
 
 .wrapper{
     margin: auto;
-    margin-top: 50px;
+    margin-top: 20px;
     display: grid;
 
     height: 80vh;
     width: 110vh;
+
+    border-top: 15px solid rgb(211, 98, 63);
+    border-bottom: 15px solid rgb(211, 98, 63);
     border-radius: 10px;
     overflow-y:scroll;
-    background-image: url(../img/bgbgRubbgbg.jpg);
+    background-image: url(../img/bgbgRubbgbg2.jpg);
     background-position: center;
     background-size: cover;
     
@@ -42,6 +63,8 @@ h1 {
     grid-template-columns: repeat(2, 1fr);
     justify-items: center; 
     opacity: 0;
+
+    transition: all 1s;
 }
 
 .wrapperNor{
@@ -53,6 +76,7 @@ h1 {
     grid-template-columns: repeat(2, 1fr);
     justify-items: center; 
 
+    transition: all 1s;
 }
 
 
@@ -64,12 +88,12 @@ h1 {
     border-radius: 30px 30px 300px 20px;
 
     margin: 30px 30px;
-    width: 400px;
+    width: 420px;
     height: 170px;
     padding-left: 20px;
     background-image: url(../img/wave.png);
     background-size: cover;
-    transition: all 0.35s;
+    transition: all 0.55s;
 }
 
 .divList:hover{
@@ -80,19 +104,26 @@ h1 {
 
 .divList p{
     font-size: 16px;
+    font-family: cursive;
 }
 
 .fav{
     border: none;
     background: none;
     text-align: right;
+
     margin-top: 10px;
     margin-right: 10px;
+
     background-image: url(../img/nofavorite-35.png);
     background-repeat: no-repeat;
+
     width: 35px;
     height: 35px;
+
     cursor: pointer;
+
+    transition: all 0.5s;
 }
 
 .favAct{
@@ -116,12 +147,13 @@ h1 {
 
 
 .notFound{
-    position: absolute;
+    position: relative;
     border: 1px dashed black;
     width: 400px;
     height: 100px;
-    top: 290px;
-    left: 50%;
+    margin-left: 50%;
+    /* top: 290px;
+    left: 50%; */
     transform: translate(-50%, -50%);
 
     text-align: center;
@@ -129,12 +161,31 @@ h1 {
 
     z-index: -1;
     opacity: 0;
-    transition: all 0.35;
+    transition: all 0.35s;
 }
 
 .notFoundShow{
     z-index: 0;
     opacity: 1;
-    transition: all 0.35;
+    transition: all 0.355s;
 }
 
+footer {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    height: 2%;
+    margin: 0;
+    line-height: 0;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+    background:rgb(211, 98, 63);
+}
+
+
+/*----- Smatphone -----*/
+/* @media (max-width: 767px ){
+
+} */
