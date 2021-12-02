@@ -38,7 +38,8 @@ const list = (data) => {
 // CERCA CONTATTO
 let results = [];
 
-searchInp.addEventListener('keyup', async (event) => {
+
+searchInp.addEventListener('keyup', (event) => {
 
 
     const value = searchInp.value.toLowerCase();
@@ -50,7 +51,8 @@ searchInp.addEventListener('keyup', async (event) => {
         names.phone.toLowerCase().search(value) > -1
     );
 
-    
+
+
     list(results);
 
     if (results.length < 1) {
@@ -66,31 +68,31 @@ function favorAdd() {
     let fav = document.querySelectorAll('.fav')
     const norDiv = q(".wrapperNor");
     const favDiv = q(".wrapperFav");
-    const favAct = document.querySelectorAll(".favAct")
+    
 
     for (let item of fav) {
         item.addEventListener('click', () => {
             item.classList.toggle("favAct");
 
             if (item.classList.contains("favAct")) {
-                favDiv.style.opacity=1;
+                favDiv.style.opacity = 1;
                 favorites.push(item.parentElement.outerHTML)
                 // item.parentElement.remove()
-            
-                
-                favDiv.innerHTML = `${favorites}`
 
-            }else{
+                favDiv.innerHTML = favorites.join("");
+
+            } else if (!item.classList.contains("favAct")) {
+                
                 favorites.pop(item.parentElement.outerHTML)
-                favDiv.innerHTML = `${favorites}`
+                favDiv.innerHTML = favorites.join("");
+
+                if(favorites.length === 0){
+                    favDiv.style.opacity = 0
+                };
+
 
             }
-            
-       }); 
-
-
+        });
     }
-
-
 }
 
