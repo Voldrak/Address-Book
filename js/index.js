@@ -51,12 +51,6 @@ searchInp.addEventListener('keyup', (event) => {
         names.phone.toLowerCase().search(value) > -1
     );
 
-//     results = favorites.filter((names) =>
-//     names.name.toLowerCase().search(value) > -1 ||
-//     names.username.toLowerCase().search(value) > -1 ||
-//     names.email.toLowerCase().search(value) > -1 ||
-//     names.phone.toLowerCase().search(value) > -1
-// );
 
     list(results);
 
