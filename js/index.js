@@ -1,43 +1,66 @@
-import { api, render } from "./utils.js";
+import { api, render, renderFav } from "./utils.js";
 
 const q = (selector) => document.querySelector(selector);
 
-const divList = document.querySelector(".divList")
 const searchInp = q(".searchInp");
+const favDiv = q(".wrapperFav");
 let data = [];
-const favorites = [];
+let favorites = [];
+
+
 
 // FETCH
 document.addEventListener("DOMContentLoaded", async () => {
     const fetchdata = await fetch(api)
     data = await fetchdata.json()
     list(data);
-
+    listFav(favorites);
+   
 });
 
 
-// RENDER
+// RENDER DATA
 const list = (data) => {
     const elements = data
         .map((names) =>
-            `<div class="divList"> <div>
+            `<div class="divList" > <div>
         <p><span class="nuet">Nome:</span> ${names.name}</p> 
         <p><span class="nuet">Username:</span> ${names.username}</p>
         <p><span class="nuet">Email:</span> ${names.email}</p>
         <p><span class="nuet">Tel:</span> ${names.phone}</p>
-     </div><button class="fav"></button></div>`).join("");
+     </div><button class="fav" id="${names.id}"></button></div>`).join("");
 
     const container = q(".wrapperNor");
     render(
         container,
         `${elements}`
     );
-    favorAdd()
 };
+
+
+//RENDER PREFERITI
+const listFav = (favorites) => {
+    const elementsFav = favorites
+        .map((names) =>
+            `<div class="divList" > <div>
+        <p><span class="nuet">Nome:</span> ${names.name}</p> 
+        <p><span class="nuet">Username:</span> ${names.username}</p>
+        <p><span class="nuet">Email:</span> ${names.email}</p>
+        <p><span class="nuet">Tel:</span> ${names.phone}</p>
+     </div><button class="fav favAct" id="${names.id}"></button></div>`).join("");
+
+    renderFav(
+        favDiv,
+        `${elementsFav}`
+    );
+      
+ 
+    }
+
 
 // CERCA CONTATTO
 let results = [];
-
+let resultsFav = [];
 
 searchInp.addEventListener('keyup', (event) => {
 
@@ -51,8 +74,15 @@ searchInp.addEventListener('keyup', (event) => {
         names.phone.toLowerCase().search(value) > -1
     );
 
+    resultsFav = favorites.filter((names) =>
+        names.name.toLowerCase().search(value) > -1 ||
+        names.username.toLowerCase().search(value) > -1 ||
+        names.email.toLowerCase().search(value) > -1 ||
+        names.phone.toLowerCase().search(value) > -1
+);
 
     list(results);
+    listFav(resultsFav);
 
     if (results.length < 1) {
         q(".notFound").classList.add("notFoundShow");
@@ -62,36 +92,35 @@ searchInp.addEventListener('keyup', (event) => {
 });
 
 
+
 //ADD FAVORITES
 function favorAdd() {
     let fav = document.querySelectorAll('.fav')
-    const norDiv = q(".wrapperNor");
-    const favDiv = q(".wrapperFav");
     
 
     for (let item of fav) {
-        item.addEventListener('click', () => {
+        item.addEventListener('click', (el) => {
             item.classList.toggle("favAct");
-
+           const myEle = data.find((pref) => pref.id == el.target.id)
+            
             if (item.classList.contains("favAct")) {
+
                 favDiv.style.opacity = 1;
-                favorites.push(item.parentElement.outerHTML)
-                // item.parentElement.remove()
-
-                favDiv.innerHTML = favorites.join("");
-
-            } else if (!item.classList.contains("favAct")) {
+                favorites.push(myEle) 
                 
-                favorites.pop(item.parentElement.outerHTML)
-                favDiv.innerHTML = favorites.join("");
-
-                if(favorites.length === 0){
-                    favDiv.style.opacity = 0
-                };
-
-
             }
-        });
-    }
-}
+             else if (!item.classList.contains("favAct")) {
+                    
+                    // favDiv.style.opacity = 0;
+                    favorites.pop(myEle) 
 
+                };
+                
+            })
+            
+        }; 
+        
+    }
+
+
+    favorAdd()
