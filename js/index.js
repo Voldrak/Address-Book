@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     data = await fetchdata.json()
     list(data);
     listFav(favorites);
-   
+    favorAdd()
 });
 
 
@@ -53,7 +53,7 @@ const listFav = (favorites) => {
         favDiv,
         `${elementsFav}`
     );
-      
+   
  
     }
 
@@ -101,19 +101,24 @@ function favorAdd() {
     for (let item of fav) {
         item.addEventListener('click', (el) => {
             item.classList.toggle("favAct");
-           const myEle = data.find((pref) => pref.id == el.target.id)
+           const myEle = data.find((pref) => pref.id == el.target.id);
             
             if (item.classList.contains("favAct")) {
 
                 favDiv.style.opacity = 1;
                 favorites.push(myEle) 
+                listFav(favorites);
                 
             }
-             else if (!item.classList.contains("favAct")) {
-                    
-                    // favDiv.style.opacity = 0;
-                    favorites.pop(myEle) 
+             else {
+                    const eleRem = favorites.filter((pref) => pref.id == el.target.id);
 
+                    favorites = favorites.filter(pref => !eleRem.includes(pref))
+
+                    // favDiv.style.opacity = 0;
+                    console.log(eleRem);
+                    console.log(favorites);
+                    listFav(favorites);
                 };
                 
             })
@@ -121,6 +126,6 @@ function favorAdd() {
         }; 
         
     }
+// console.log(favorites);
 
-
-    favorAdd()
+    
