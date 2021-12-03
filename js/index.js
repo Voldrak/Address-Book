@@ -115,9 +115,8 @@ function favorAdd() {
 
                     favorites = favorites.filter(pref => !eleRem.includes(pref))
 
-                    // favDiv.style.opacity = 0;
-                    console.log(eleRem);
-                    console.log(favorites);
+                    if(favorites.length < 1){
+                        favDiv.style.opacity = 0};
                     listFav(favorites);
                 };
                 
