@@ -67,12 +67,6 @@ searchInp.addEventListener('keyup', (event) => {
 
     const value = searchInp.value.toLowerCase();
 
-    results = data.filter((names) =>
-        names.name.toLowerCase().search(value) > -1 ||
-        names.username.toLowerCase().search(value) > -1 ||
-        names.email.toLowerCase().search(value) > -1 ||
-        names.phone.toLowerCase().search(value) > -1
-    );
 
     resultsFav = favorites.filter((names) =>
         names.name.toLowerCase().search(value) > -1 ||
@@ -81,14 +75,27 @@ searchInp.addEventListener('keyup', (event) => {
         names.phone.toLowerCase().search(value) > -1
 );
 
-    list(results);
-    listFav(resultsFav);
+    results = data.filter((names) =>
+        names.name.toLowerCase().search(value) > -1 ||
+        names.username.toLowerCase().search(value) > -1 ||
+        names.email.toLowerCase().search(value) > -1 ||
+        names.phone.toLowerCase().search(value) > -1
+    );
 
+    
+    listFav(resultsFav);
+    list(results);
+    
+    favorAdd()
+
+    
     if (results.length < 1) {
         q(".notFound").classList.add("notFoundShow");
     } else {
         q(".notFound").classList.remove("notFoundShow");
     }
+
+    
 });
 
 
@@ -103,6 +110,7 @@ function favorAdd() {
             item.classList.toggle("favAct");
            const myEle = data.find((pref) => pref.id == el.target.id);
             
+
             if (item.classList.contains("favAct")) {
 
                 favDiv.style.opacity = 1;
@@ -119,12 +127,12 @@ function favorAdd() {
                         favDiv.style.opacity = 0};
                     listFav(favorites);
                 };
+            
                 
+
             })
             
         }; 
         
     }
-// console.log(favorites);
-
     

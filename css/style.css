@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Merienda+One&display=swap');
-
+html{
+    height: 100%;
+}
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-image: url(../img/68-682106_work-desk-background-virtual-desktop-desk-beta-by.png);
     background-repeat:no-repeat;
     background-position: center;
     background-size: cover; 
-    
-    /* height: 100vw; */
-    overflow: hidden;
+
+
+    overflow-x: hidden;
 }
 
 h1 {
@@ -22,6 +24,7 @@ h1 {
     margin-top: 40px;
     font-family: 'Merienda One', cursive;
     font-size: 23px;
+
 
 }
 
@@ -38,9 +41,10 @@ box-shadow:  0px 0px 20px 0px rgba(255, 115, 0, 0.6);
 }
 
 .wrapper{
+    position: relative;
     margin: auto;
     margin-top: 20px;
-    display: grid;
+    display: block;
 
     height: 80vh;
     width: 110vh;
@@ -150,14 +154,13 @@ box-shadow:  0px 0px 20px 0px rgba(255, 115, 0, 0.6);
 
 
 .notFound{
-    position: relative;
+    position: absolute;
     border: 1px dashed black;
-    width: 400px;
+    width: 50%;
     height: 100px;
+    margin-top: 8%;
     margin-left: 50%;
-    /* top: 290px;
-    left: 50%; */
-    transform: translate(-50%, -50%);
+    transform: translate(-50%);
 
     text-align: center;
     line-height: 65px;
@@ -175,11 +178,11 @@ box-shadow:  0px 0px 20px 0px rgba(255, 115, 0, 0.6);
 
 footer {
     position: fixed;
+    display: block;
     bottom: 0;
     width: 100%;
     height: 25px;
-    margin-left: auto;
-    margin-right: auto;
+    left: 0;
     line-height: 0;
     text-align: center;
     font-size: 14px;
